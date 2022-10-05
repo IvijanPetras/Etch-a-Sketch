@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+    <link
+      rel="shortcut icon"
+      href="https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/pencil-icon.png"
+      type="image/x-icon"
+    />
+    <title>Etch-a-Sketch</title>
+  </head>
+  <body>
+    <button id="button">New sketch</button>
+
+    <label class="switch">
+      <h4>Rainbow</h4>
+      <input type="checkbox" id="togBtn" onclick="color()" />
+      <span class="slider round"></span>
+    </label>
+    <div class="slidecontainer">
+      <label for="myRange">Grid density</label><br />
+      <input type="range" min="1" max="100" value="16" id="myRange" />
+    </div>
+    <div class="container"></div>
+  </body>
+  <script>
+    const container = document.querySelector(".container");
+    const rainbow = document.getElementById("togBtn");
+    function color() {
+      if (rainbow.checked == true) {
+        container.addEventListener("mouseover", (e) => {
+          let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+          e.target.style.backgroundColor = "#" + randomColor;
+        });
+      } else {
+        container.addEventListener("mouseover", (e) => {
+          e.target.style.backgroundColor = "black";
+        });
+      }
+
+      function toggleRainbow() {
+        if (rainbow.checked == true) {
+          return color();
+        } else return;
+      }
+    }
+  </script>
+</html>
